@@ -54,8 +54,8 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.0.0" />
-    <PackageReference Include="trifenix.connect" Version="0.8.52" />
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.1.1" />
+    <PackageReference Include="trifenix.connect" Version="0.8.75" />
   </ItemGroup>
 
  
