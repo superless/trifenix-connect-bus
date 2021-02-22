@@ -20,7 +20,12 @@ variables:
 pr: none
   
 steps:
-
+  - task: SonarQubePrepare@4
+    inputs:
+      SonarQube: 'AGROFENIX-connectbus'
+      scannerMode: 'MSBuild'
+      projectKey: 'AGROFENIX-connectbus'
+      projectName: 'AGROFENIX-connectbus'
   - task: gitversion/setup@0
     inputs:
       versionSpec: '5.1'
@@ -52,7 +57,10 @@ steps:
       arguments: '--configuration $(BuildConfiguration) /p:Version=$(SemVer)' 
       versioningScheme: byEnvVar 
       versionEnvVar: SemVer
-
+  - task: SonarQubeAnalyze@4
+  - task: SonarQubePublish@4
+    inputs:
+      pollingTimeoutSec: '300'
   # publica paquete para publicar.
   - task: PublishBuildArtifacts@1
     inputs:
