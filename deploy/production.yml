@@ -25,9 +25,19 @@ pr: none
 
   
 steps:
+<<<<<<< HEAD
 
   # generamos versión del paquete.
   - task: PowerShell@2
+=======
+  - task: SonarQubePrepare@4
+    inputs:
+      SonarQube: 'AGROFENIX-connectbus'
+      scannerMode: 'MSBuild'
+      projectKey: 'AGROFENIX-connectbus'
+      projectName: 'AGROFENIX-connectbus'
+  - task: gitversion/setup@0
+>>>>>>> master
     inputs:
       targetType: 'inline'
       script: |
@@ -60,6 +70,7 @@ steps:
       versioningScheme: byBuildNumber
     displayName: restore dotnet
 
+<<<<<<< HEAD
   
   - task: CmdLine@2
     inputs:
@@ -68,6 +79,18 @@ steps:
     displayName: dotnet pack
     
   # especial : dotnet pack $(name-project).csproj --configuration $(BuildConfiguration) /p:Version=%var% --output $(Build.ArtifactStagingDirectory)
+=======
+
+  # genera paquete usando la versión proporcionada por gitversion
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet pack' 
+    inputs: 
+      command: pack
+      packagesToPack: '**/$(name-project).csproj'       
+      arguments: '--configuration $(BuildConfiguration) /p:Version=$(SemVer)' 
+      versioningScheme: byEnvVar 
+      versionEnvVar: SemVer
+>>>>>>> master
   - task: SonarQubeAnalyze@4
   - task: SonarQubePublish@4
     inputs:
