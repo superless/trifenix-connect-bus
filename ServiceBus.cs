@@ -14,6 +14,7 @@ namespace trifenix.connect.bus
     /// </summary>
     public class ServiceBus {
 
+
         private readonly MessageSender Sender;
 
         /// <summary>
