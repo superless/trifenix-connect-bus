@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>trifenix.connect.bus</name>
+    </assembly>
+    <members>
+        <member name="T:trifenix.connect.bus.Namespace">
+            <summary>
+            clases y objetos relacionados con la gestión de bus de servicios.
+            </summary>
+        </member>
+        <member name="T:trifenix.connect.bus.ServiceBus">
+            <summary>
+            Operaciones de bus de servicios
+            </summary>
+        </member>
+        <member name="M:trifenix.connect.bus.ServiceBus.#ctor(System.String,System.String)">
+            <summary>
+            Constructor del servicio de bus
+            </summary>
+            <param name="connectionString">cadena de conexión del servicio de bus de Azure</param>
+            <param name="queueName">nombre de la cola que será utilizada</param>
+        </member>
+        <member name="M:trifenix.connect.bus.ServiceBus.Serialize(System.Object)">
+            <summary>
+            Convierte un objeto en bytes para ser serializado
+            </summary>
+            <param name="obj">objeto a serializar</param>
+            <returns></returns>
+        </member>
+        <member name="M:trifenix.connect.bus.ServiceBus.Deserialize(System.Byte[])">
+            <summary>
+            Deserializa un objeto desde un array de bytes
+            </summary>
+            <param name="arrBytes">bytes que corresponden a un objeto a ser serializado</param>
+            <returns>objeto serializado</returns>
+        </member>
+        <member name="M:trifenix.connect.bus.ServiceBus.PushElement(System.Object,System.String)">
+            <summary>
+            Pone un elemento en la cola
+            </summary>
+            <param name="obj">objeto a poner en la cola</param>
+            <param name="sessionId">identificador de la sesión de la cola</param>
+            <returns></returns>
+        </member>
+        <member name="T:trifenix.connect.bus.OperationInstance`1">
+            <summary>
+            Detalles necesarios para pasar un input a la cola
+            </summary>
+            <typeparam name="InputElement"></typeparam>
+        </member>
+        <member name="M:trifenix.connect.bus.OperationInstance`1.#ctor(`0,System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor de entidad para insertar un input en la cola
+            </summary>
+            <param name="_element">objeto a insertar</param>
+            <param name="_id">identificador opcional del elemento</param>
+            <param name="_entityName">nombre de la entidad (ej: producto)</param>
+            <param name="_httpMethod">Método de como se pasará el input</param>
+            <param name="_objectIdAAD">identificador de active directory</param>
+        </member>
+    </members>
+</doc>
